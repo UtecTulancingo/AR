@@ -7,34 +7,46 @@
     <script src="https://cdn.jsdelivr.net/npm/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js"></script>
 </head>
 <body>
-    <a-scene mindar-image="imageTargetSrc:./targets.mind ; maxTrack: 1"
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind;
+                       maxTrack: 1;
+                       filterMinCF: 0.001;
+                       filterBeta: 0.01;
+                       missTolerance: 5"
          color-space="sRGB"
-         renderer="colorManagement: true"
-         physicallyCorrectLights
+         renderer="colorManagement: true; physicallyCorrectLights: true"
          xr-mode-ui="enabled: false"
          vr-mode-ui="enabled: false"
          device-orientation-permission-ui="enabled: false">
-    <a-assets>
-        <a-asset-item id="logo1" src="./GLBs/Logo1.glb"></a-asset-item>
-    </a-assets>
 
-    <!-- Lights -->
-    <a-entity environment="preset: dusk; lighting: none"></a-entity>
-    <a-light type="ambient" intensity="0.5"></a-light>
-    <a-light type="directional" intensity="1" position="0 1 1"></a-light>
+  <a-assets>
+    <a-asset-item id="logo1" src="./GLBs/Logo1.glb"></a-asset-item>
+  </a-assets>
 
-    <!-- Camera -->
-    <a-entity raycaster="objects: .clickable" cursor="rayOrigin: mouse;"></a-entity>
-    <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="near: 1; far: 100; objects: .clickable"></a-camera>
+  <!-- Environment map for improved reflections -->
+  <a-entity environment="preset: dusk; lighting: none"></a-entity>
 
-    <!-- Target and Model -->
-    <a-entity id="logo1" mindar-image-target="targetIndex: 0">
-        <a-gltf-model rotation="0 0 0"
-                      position="0 0 0"
-                      scale=".5 .5 .5"
-                      src="#logo1"
-                      animation-mixer></a-gltf-model>
-    </a-entity>
+  <!-- Lighting setup -->
+  <a-light type="ambient" intensity="0.5"></a-light>
+  <a-light type="directional" intensity="1.5" position="0 2 1"></a-light>
+  <a-light type="directional" intensity="0.6" position="-2 1 0"></a-light>
+
+  <!-- Camera -->
+  <a-entity raycaster="objects: .clickable" cursor="rayOrigin: mouse;"></a-entity>
+  <a-camera position="0 0 0"
+            look-controls="enabled: false"
+            cursor="fuse: false; rayOrigin: mouse;"
+            raycaster="near: 1; far: 100; objects: .clickable"></a-camera>
+
+  <!-- Model on image target -->
+  <a-entity id="logo1" mindar-image-target="targetIndex: 0">
+    <a-gltf-model src="#logo1"
+                  position="0 0 0"
+                  rotation="0 0 0"
+                  scale="0.5 0.5 0.5"
+                  animation-mixer
+                  environment-map-intensity="2.0"></a-gltf-model>
+  </a-entity>
+
 </a-scene>
 </body>
 </html>
