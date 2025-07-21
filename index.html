@@ -7,32 +7,32 @@
 </head>
 <body>
     <a-scene mindar-image="imageTargetSrc:./targets.mind ; maxTrack: 1"
-             color-space="sRGB"
-             renderer="colorManagement: true"
-             physicallyCorrectLights
-             xr-mode-ui="enabled: false"
-             vr-mode-ui="enabled: false"
-             device-orientation-permission-ui="enabled: false">
-        <a-assets>
-            <a-asset-item id="logo1"
-                          src="./GLBs/Logo1.glb"></a-asset-item>
-        </a-assets>
+         color-space="sRGB"
+         renderer="colorManagement: true"
+         physicallyCorrectLights
+         xr-mode-ui="enabled: false"
+         vr-mode-ui="enabled: false"
+         device-orientation-permission-ui="enabled: false">
+    <a-assets>
+        <a-asset-item id="logo1" src="./GLBs/Logo1.glb"></a-asset-item>
+    </a-assets>
 
-        <!-- Ambient Light for base visibility -->
-<a-light type="ambient" intensity="0.5"></a-light>
+    <!-- Lights -->
+    <a-light type="ambient" intensity="0.5"></a-light>
+    <a-light type="directional" intensity="1" position="0 1 1"></a-light>
 
-        <a-entity raycaster="objects: .clickable" cursor="rayOrigin: mouse;"></a-entity>"
-       <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="near: 1; far: 100; objects: .clickable"></a-camera>
+    <!-- Camera -->
+    <a-entity raycaster="objects: .clickable" cursor="rayOrigin: mouse;"></a-entity>
+    <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="near: 1; far: 100; objects: .clickable"></a-camera>
 
-        <a-entity id="logo1" mindar-image-target="targetIndex: 0">
-
-            <a-gltf-model rotation="0 0 0 "
-                          position="0 0 0"
-                          scale=".5 .5 .5"
-                          src="#logo1"
-                          animation-mixer></a-gltf-model>
-        </a-entity>
-
-    </a-scene>
+    <!-- Target and Model -->
+    <a-entity id="logo1" mindar-image-target="targetIndex: 0">
+        <a-gltf-model rotation="0 0 0"
+                      position="0 0 0"
+                      scale=".5 .5 .5"
+                      src="#logo1"
+                      animation-mixer></a-gltf-model>
+    </a-entity>
+</a-scene>
 </body>
 </html>
