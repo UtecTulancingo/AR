@@ -19,7 +19,10 @@
          device-orientation-permission-ui="enabled: false">
 
   <a-assets>
-    <a-asset-item id="logo1" src="./GLBs/Logo1.glb"></a-asset-item>
+    <a-asset-item id="Logo0" src="./GLBs/Logo0.glb"></a-asset-item>
+    <a-asset-item id="Logo1" src="./GLBs/Logo1.glb"></a-asset-item>
+    <a-asset-item id="Logo1" src="./GLBs/Logo2.glb"></a-asset-item>
+    <a-asset-item id="Logo1" src="./GLBs/Logo3.glb"></a-asset-item>
   </a-assets>
 
   <!-- Environment map for improved reflections -->
@@ -38,11 +41,38 @@
             raycaster="near: 1; far: 100; objects: .clickable"></a-camera>
 
   <!-- Model on image target -->
-  <a-entity id="logo1" mindar-image-target="targetIndex: 0">
-    <a-gltf-model src="#logo1"
+  <a-entity id="Logo0" mindar-image-target="targetIndex: 0">
+    <a-gltf-model src="#Logo0"
                   position="0 0 0"
                   rotation="0 0 0"
                   scale="0.5 0.5 0.5"
+                  animation-mixer
+                  environment-map-intensity="2.0"></a-gltf-model>
+  </a-entity>
+
+  <a-entity id="Logo1" mindar-image-target="targetIndex: 1">
+    <a-gltf-model src="#Logo1"
+                  position="-2.3 0 0"
+                  rotation="0 0 0"
+                  scale="0.5 0.5 0.5"
+                  animation-mixer
+                  environment-map-intensity="2.0"></a-gltf-model>
+  </a-entity>
+
+    <a-entity id="Logo2" mindar-image-target="targetIndex: 2">
+    <a-gltf-model src="#Logo2"
+                  position="0 0 0"
+                  rotation="0 0 0"
+                  scale="0.5 0.5 0.5"
+                  animation-mixer
+                  environment-map-intensity="2.0"></a-gltf-model>
+  </a-entity>
+
+      <a-entity id="Logo3" mindar-image-target="targetIndex: 3">
+    <a-gltf-model src="#Logo3"
+                  position="0 0 0"
+                  rotation="0 0 0"
+                  scale="0.1 0.1 0.1"
                   animation-mixer
                   environment-map-intensity="2.0"></a-gltf-model>
   </a-entity>
